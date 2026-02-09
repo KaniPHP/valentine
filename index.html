@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ரோஸ் டே ஸ்பெஷல் 🌹</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Noto Sans Tamil', sans-serif;
+            background: linear-gradient(-45deg, #ff0844, #ff6a88, #ff99ac, #ff1e56);
+            background-size: 400% 400%;
+            animation: gradientMove 8s ease infinite;
+            overflow: hidden;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 380px;
+            position: relative;
+        }
+
+        h1 {
+            color: #ffd6e0;
+            font-size: 26px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 15px;
+            transition: 0.3s;
+        }
+
+        #yesBtn {
+            background: #ff1e56;
+            color: white;
+            box-shadow: 0 0 15px #ff4d6d;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
+
+        #noBtn {
+            background: #444;
+            color: white;
+            position: absolute;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 19px;
+            display: none;
+            animation: fadeIn 1s ease forwards;
+            color: #ffd6e0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .floating {
+            position: absolute;
+            font-size: 22px;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh);
+            }
+
+            100% {
+                transform: translateY(-10vh);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="floating" style="left:10%; animation-delay:0s;">🌹</div>
+    <div class="floating" style="left:30%; animation-delay:2s;">💖</div>
+    <div class="floating" style="left:50%; animation-delay:4s;">🌹</div>
+    <div class="floating" style="left:70%; animation-delay:1s;">💕</div>
+    <div class="floating" style="left:90%; animation-delay:3s;">❤️</div>
+
+    <div class="card">
+        <h1>🌹 ஹேப்பி ரோஸ் டே என் கணவருக்கு 🌹</h1>
+
+        <p>
+            ரோஜா சிவப்பு நிறம்… ❤️<br>
+            என் காதலும் அப்படித்தான் தீவிரமானது…<br><br>
+            ஒவ்வொரு நாளும் உன்னை நான்
+            இன்னும் இன்னும் அதிகமாக நேசிக்கிறேன் 💕
+        </p>
+
+        <button id="yesBtn" onclick="showLove()">நானும் உன்னை நேசிக்கிறேன் ❤️</button>
+        <button id="noBtn">இல்லை 😜</button>
+
+        <div class="message" id="loveMessage">
+            🌹 நீ தான் என் வாழ்வு…
+            என் சிரிப்பு… என் சந்தோஷம்… ❤️
+            எப்போதும் உன்னோடு தான் இருக்க வேண்டும் 💖
+            நான் உன்னை மிகவும் மிகவும் நேசிக்கிறேன் 💕
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+
+        noBtn.addEventListener("mouseover", function () {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        });
+
+        function showLove() {
+            document.getElementById("loveMessage").style.display = "block";
+        }
+    </script>
+
+</body>
+
+</html>
