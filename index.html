@@ -5,217 +5,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanimozhi ❤️ Saravanan</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         body {
             overflow-x: hidden;
-            font-family: sans-serif;
+            font-family: sans-serif
         }
 
-        /* =========================
-   SECTION TRANSITION
-========================= */
+        /* Section animation */
         .section {
             display: none;
             opacity: 0;
             transform: translateY(40px);
-            transition: all 1s ease;
+            transition: 1s
         }
 
         .section.active {
             display: block;
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0)
         }
 
-        /* =========================
-   FLOATING HEARTS
-========================= */
-        .heart {
+        /* Floating hearts */
+        .float-heart {
             position: fixed;
             bottom: -20px;
             font-size: 22px;
             animation: floatUp 6s linear infinite;
             pointer-events: none;
+            z-index: 999;
         }
 
         @keyframes floatUp {
             0% {
                 transform: translateY(0);
-                opacity: 1;
+                opacity: 1
             }
 
             100% {
                 transform: translateY(-110vh);
-                opacity: 0;
+                opacity: 0
             }
         }
 
-        /* =========================
-   GALLERY AUTO SCROLL
-========================= */
+        /* Photo Heart */
+        .photo-heart {
+            display: grid;
+            grid-template-columns: repeat(9, 70px);
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .photo-heart img {
+            width: 70px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: .3s;
+        }
+
+        .photo-heart img:hover {
+            transform: scale(1.1)
+        }
+
+        .empty {
+            visibility: hidden;
+            width: 70px;
+            height: 80px
+        }
+
+        /* Gallery scroll */
         .scrollWrapper {
-            overflow: hidden;
-            width: 100%;
+            overflow: hidden
         }
 
         .scrollGallery {
             display: flex;
             gap: 30px;
             width: max-content;
-            animation: scroll 40s linear infinite;
+            animation: scroll 35s linear infinite
         }
 
         @keyframes scroll {
             0% {
-                transform: translateX(0);
+                transform: translateX(0)
             }
 
             100% {
-                transform: translateX(-50%);
+                transform: translateX(-50%)
             }
         }
 
         .scrollGallery img {
-            width: 240px;
-            border-radius: 25px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            transition: transform .6s ease;
+            width: 220px;
+            border-radius: 20px
         }
 
-        .scrollGallery img:hover {
-            transform: scale(1.15) rotate(3deg);
-        }
-
-        /* =========================
-   PASSWORD SCREEN
-========================= */
-        #lockScreen {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(135deg, #000, #111);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            color: white;
-            text-align: center;
-        }
-
-        /* =========================
-   REAL HEART SHAPE LAYOUT
-========================= */
-        .heart-container {
-            position: relative;
-            width: 420px;
-            height: 380px;
-            margin: auto;
-        }
-
-        .heart-container img {
-            position: absolute;
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            animation: heartbeat 2s infinite ease-in-out;
-            transition: transform .4s ease;
-        }
-
-        .heart-container img:hover {
-            transform: scale(1.2);
-        }
-
-        /* Heart Positions */
-        .heart-container img:nth-child(1) {
-            top: 40px;
-            left: 110px;
-        }
-
-        .heart-container img:nth-child(2) {
-            top: 40px;
-            right: 110px;
-        }
-
-        .heart-container img:nth-child(3) {
-            top: 100px;
-            left: 50px;
-        }
-
-        .heart-container img:nth-child(4) {
-            top: 100px;
-            left: 150px;
-        }
-
-        .heart-container img:nth-child(5) {
-            top: 100px;
-            right: 150px;
-        }
-
-        .heart-container img:nth-child(6) {
-            top: 100px;
-            right: 50px;
-        }
-
-        .heart-container img:nth-child(7) {
-            top: 170px;
-            left: 80px;
-        }
-
-        .heart-container img:nth-child(8) {
-            top: 170px;
-            left: 170px;
-        }
-
-        .heart-container img:nth-child(9) {
-            top: 170px;
-            right: 170px;
-        }
-
-        .heart-container img:nth-child(10) {
-            top: 170px;
-            right: 80px;
-        }
-
-        .heart-container img:nth-child(11) {
-            top: 240px;
-            left: 120px;
-        }
-
-        .heart-container img:nth-child(12) {
-            top: 240px;
-            right: 120px;
-        }
-
-        .heart-container img:nth-child(13) {
-            bottom: 30px;
-            left: 165px;
-        }
-
-        /* =========================
-   HEARTBEAT PULSE
-========================= */
-        @keyframes heartbeat {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.08);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        /* =========================
-   FIREWORK PARTICLES
-========================= */
+        /* Fireworks */
         .firework {
             position: fixed;
             width: 6px;
@@ -228,111 +115,65 @@
         @keyframes explode {
             from {
                 transform: scale(1);
-                opacity: 1;
+                opacity: 1
             }
 
             to {
                 transform: scale(12);
-                opacity: 0;
+                opacity: 0
             }
         }
 
-        /* =========================
-   ZOOM MODAL
-========================= */
-        .zoom-modal {
+        /* Lock screen */
+        #lockScreen {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.9);
+            background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 99999;
-        }
-
-        .zoom-modal img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 25px;
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
-        }
-
-        /* =========================
-   MOBILE OPTIMIZATION
-========================= */
-        @media (max-width: 768px) {
-
-            .scrollGallery img {
-                width: 160px;
-            }
-
-            .heart-container {
-                width: 300px;
-                height: 300px;
-            }
-
-            .heart-container img {
-                width: 70px;
-                height: 70px;
-            }
-
-            #countdown {
-                font-size: 60px !important;
-            }
+            z-index: 9999;
+            color: white;
+            text-align: center;
         }
     </style>
 </head>
 
 <body class="bg-gradient-to-r from-pink-500 via-red-500 to-purple-600 text-white text-center">
 
-    <!-- 🔐 PASSWORD LOCK -->
+    <!-- PASSWORD SCREEN -->
     <div id="lockScreen">
         <div>
-            <h1 class="text-3xl mb-6">Enter Our Secret Password 🔐</h1>
+            <h1 class="text-3xl mb-6">Enter Our Secret Password 🔐 (Pet name)</h1>
             <input type="password" id="password" class="p-3 rounded text-black">
             <br><br>
-            <button onclick="unlock()" class="bg-pink-600 px-6 py-2 rounded">
-                Unlock ❤️
-            </button>
+            <button onclick="unlock()" class="bg-pink-600 px-6 py-2 rounded">Unlock ❤️</button>
             <p id="error" class="mt-4 text-red-400"></p>
         </div>
     </div>
 
-    <!-- 🎵 Music -->
-    <audio id="bgMusic" loop>
-        <source src="audio/love.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- ❤️ HERO -->
+    <!-- HERO -->
     <section id="hero" class="section active py-24">
-        <h1 class="text-5xl font-bold mb-6">
-            Kanimozhi ❤️ Saravanan
-        </h1>
-
-        <p class="text-xl mb-4">We go CINEMA LEVEL 5000? 😍💍</p>
-
-        <p id="dayCounter" class="text-lg mb-10"></p>
-
-        <button onclick="startCountdown()"
-            class="bg-white text-pink-600 px-8 py-3 rounded-full shadow-lg hover:scale-110 transition">
-            Start Surprise 💌
-        </button>
+        <h1 class="text-5xl font-bold mb-6">Kanimozhi ❤️ Saravanan</h1>
+        <p id="dayCounter" class="mb-6 text-xl"></p>
+        <button onclick="startCountdown()" class="bg-white text-pink-600 px-8 py-3 rounded-full">Start Surprise
+            💌</button>
     </section>
 
-    <!-- ⏳ COUNTDOWN -->
+    <!-- COUNTDOWN -->
     <section id="countdownSection" class="section py-24">
         <div id="countdown" class="text-8xl font-bold"></div>
     </section>
 
-    <!-- 💬 FIRST CHAT -->
+    <!-- FIRST CHAT -->
     <section id="chatSection" class="section py-24">
-        <h2 class="text-4xl font-bold mb-6">Our First Chat 💬</h2>
+        <h2 class="text-4xl mb-6">Our First Chat 💬 It's changed my entire life</h2>
         <img src="./images/first_chat.jpeg" class="mx-auto w-80 rounded-3xl shadow-2xl">
-        <p class="mt-6 text-xl italic">"Can I Call You?" 📞❤️</p>
+        <p class="mt-6 text-xl italic">"Can I Call You?" ❤️ </p>
         <button onclick="showLoveQuestion()" class="mt-8 bg-white text-pink-600 px-6 py-2 rounded-full">Next 💕</button>
     </section>
 
-    <!-- ❤️ LOVE QUESTION -->
+    <!-- LOVE QUESTION -->
     <section id="loveQuestion" class="section py-24">
         <h2 class="text-4xl mb-10">Do You Love Me? 😍</h2>
         <div class="flex justify-center gap-10 relative">
@@ -341,16 +182,16 @@
         </div>
     </section>
 
-    <!-- 📸 GALLERY -->
+    <!-- GALLERY -->
     <section id="gallerySection" class="section py-24 bg-black bg-opacity-40">
-        <h2 class="text-4xl font-bold mb-12">Our Romantic Memories 💕</h2>
+        <h2 class="text-4xl mb-12">Our Memories 💕</h2>
         <div class="scrollWrapper">
             <div class="scrollGallery">
                 <script>
-                    for (let i = 1; i <= 16; i++) {
+                    for (let i = 1; i <= 12; i++) {
                         document.write(`<img src="./images/Image_${i}.jpeg">`);
                     }
-                    for (let i = 1; i <= 16; i++) {
+                    for (let i = 1; i <= 12; i++) {
                         document.write(`<img src="./images/Image_${i}.jpeg">`);
                     }
                 </script>
@@ -358,70 +199,64 @@
         </div>
     </section>
 
-    <!-- 💌 TAMIL AUTO TYPING MESSAGE -->
+    <!-- TAMIL MESSAGE -->
     <section id="tamilSection" class="section py-24">
-        <h2 class="text-4xl font-bold mb-10">உனக்காக ❤️</h2>
+        <h2 class="text-4xl mb-8">உனக்காக ❤️</h2>
         <p id="typingText" class="text-2xl max-w-2xl mx-auto"></p>
     </section>
 
-    <section id="finalSection"
-        class="section py-24 bg-gradient-to-r from-pink-600 via-red-500 to-purple-600 text-center">
+    <!-- FINAL HEART -->
+    <section id="finalSection" class="section py-24">
+        <h1 class="text-6xl font-bold mb-16 animate-bounce">I LOVE YOU FOREVER ❤️</h1>
 
-        <h1 class="text-6xl font-bold mb-16 text-white animate-bounce">
-            I LOVE YOU FOREVER ❤️
-        </h1>
-
-        <div class="heart-container">
-
-            <!-- Row 1 -->
-            <img src="./images/Image_17.jpeg">
-            <img src="./images/Image_18.jpeg">
-
-            <!-- Row 2 -->
-            <img src="./images/Image_19.jpeg">
-            <img src="./images/Image_20.jpeg">
-            <img src="./images/Image_21.jpeg">
-            <img src="./images/Image_22.jpeg">
-
-            <!-- Row 3 -->
-            <img src="./images/Image_23.jpeg">
-            <img src="./images/Image_17.jpeg">
-            <img src="./images/Image_18.jpeg">
-            <img src="./images/Image_19.jpeg">
-            <img src="./images/Image_20.jpeg">
-            <img src="./images/Image_21.jpeg">
-
-            <!-- Row 4 -->
-            <img src="./images/Image_22.jpeg">
-            <img src="./images/Image_23.jpeg">
-            <img src="./images/Image_17.jpeg">
-            <img src="./images/Image_18.jpeg">
-
-            <!-- Row 5 -->
-            <img src="./images/Image_19.jpeg">
-            <img src="./images/Image_20.jpeg">
+        <div class="photo-heart">
+            <!-- same heart grid you provided -->
+            <div class="empty"></div><img src="./images/Image_17.jpeg"><img src="./images/Image_18.jpeg">
+            <div class="empty"></div>
+            <div class="empty"></div><img src="./images/Image_19.jpeg"><img src="./images/Image_20.jpeg">
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <img src="./images/Image_21.jpeg"><img src="./images/Image_22.jpeg"><img src="./images/Image_23.jpeg"><img
+                src="./images/Image_17.jpeg"><img src="./images/Image_18.jpeg"><img src="./images/Image_19.jpeg"><img
+                src="./images/Image_20.jpeg"><img src="./images/Image_21.jpeg">
+            <div class="empty"></div>
+            <img src="./images/Image_22.jpeg"><img src="./images/Image_23.jpeg"><img src="./images/Image_17.jpeg"><img
+                src="./images/Image_18.jpeg"><img src="./images/Image_19.jpeg"><img src="./images/Image_20.jpeg"><img
+                src="./images/Image_21.jpeg"><img src="./images/Image_22.jpeg">
+            <div class="empty"></div>
+            <div class="empty"></div><img src="./images/Image_23.jpeg"><img src="./images/Image_17.jpeg"><img
+                src="./images/Image_18.jpeg"><img src="./images/Image_19.jpeg"><img src="./images/Image_20.jpeg"><img
+                src="./images/Image_21.jpeg">
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div><img src="./images/Image_22.jpeg"><img src="./images/Image_23.jpeg"><img
+                src="./images/Image_17.jpeg"><img src="./images/Image_18.jpeg">
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div><img src="./images/Image_19.jpeg" style="margin-left: 40px;"><img
+                src="./images/Image_20.jpeg" style="margin-left: 40px;"><img src="./images/Image_21.jpeg"
+                style="margin-left: 40px;">
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div><img src="./images/Image_22.jpeg" style="margin-left: 120px;">
+            <div class="empty"></div>
+            <div class="empty"></div>
+            <div class="empty"></div>
         </div>
-
-        <h2 class="mt-10 text-3xl font-bold text-white animate-pulse">
-            Ammu ❤️ Chittu
-        </h2>
-
     </section>
-
-    <!-- Zoom Modal -->
-    <div id="zoomModal" class="zoom-modal hidden" onclick="closeZoom()">
-        <img id="zoomedImg">
-    </div>
-
-
-
 
     <script>
 
         /* PASSWORD */
         function unlock() {
             let pass = document.getElementById("password").value;
-            if (pass === "forever27") {
+            if (pass === "ammu" || pass === "chittu") {
                 document.getElementById("lockScreen").style.display = "none";
             } else {
                 document.getElementById("error").innerText = "Wrong Password 😜";
@@ -434,14 +269,14 @@
             document.getElementById(id).classList.add('active');
         }
 
-        /* Marriage Day Counter */
+        /* DAY COUNTER */
         let marriageDate = new Date("Oct 27, 2025");
         let today = new Date();
         let diff = Math.floor((today - marriageDate) / (1000 * 60 * 60 * 24));
         document.getElementById("dayCounter").innerText =
             "We have been together for " + diff + " beautiful days ❤️";
 
-        /* Countdown */
+        /* COUNTDOWN */
         function startCountdown() {
             show('countdownSection');
             let count = 5;
@@ -449,21 +284,15 @@
             el.innerText = count;
             let interval = setInterval(() => {
                 count--;
-                if (count > 0) {
-                    el.innerText = count;
-                } else {
-                    clearInterval(interval);
-                    show('chatSection');
-                }
+                if (count > 0) { el.innerText = count; }
+                else { clearInterval(interval); show('chatSection'); }
             }, 1000);
         }
 
-        /* Next */
-        function showLoveQuestion() {
-            show('loveQuestion');
-        }
+        /* LOVE QUESTION */
+        function showLoveQuestion() { show('loveQuestion'); }
 
-        /* NO Button */
+        /* NO BUTTON RUN */
         let noBtn = document.getElementById("noBtn");
         noBtn.addEventListener("mouseover", () => {
             noBtn.style.left = Math.random() * 80 + "%";
@@ -472,47 +301,40 @@
 
         /* YES */
         function yesClicked() {
-            document.getElementById("bgMusic").play();
             show('gallerySection');
             createHearts();
-            setTimeout(() => {
-                show('tamilSection');
-                typeTamil();
-            }, 10000);
+            setTimeout(() => { show('tamilSection'); typeTamil(); }, 8000);
         }
 
-        /* Tamil Auto Typing */
-        let message = "நீ தான் என் வாழ்க்கை... என் மகிழ்ச்சி... என் இதயம்... நான் உன்னை என்றும் என்றும் நேசிக்கிறேன் ❤️";
+        /* TAMIL TYPING */
+        let msg = "நீ தான் என் வாழ்க்கை... என் மகிழ்ச்சி... என் இதயம்... நான் உன்னை என்றும் நேசிக்கிறேன் ❤️";
         let i = 0;
         function typeTamil() {
             let interval = setInterval(() => {
-                if (i < message.length) {
-                    document.getElementById("typingText").innerHTML += message.charAt(i);
+                if (i < msg.length) {
+                    document.getElementById("typingText").innerHTML += msg.charAt(i);
                     i++;
                 } else {
                     clearInterval(interval);
-                    setTimeout(() => {
-                        show('finalSection');
-                        fireworks();
-                    }, 3000);
+                    setTimeout(() => { show('finalSection'); fireworks(); }, 3000);
                 }
             }, 70);
         }
 
-        /* Hearts */
+        /* FLOAT HEARTS */
         function createHearts() {
             setInterval(() => {
-                let heart = document.createElement("div");
-                heart.className = "heart";
-                heart.innerHTML = "💖";
-                heart.style.left = Math.random() * 100 + "vw";
-                heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-                document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 6000);
+                let h = document.createElement("div");
+                h.className = "float-heart";
+                h.innerHTML = "💖";
+                h.style.left = Math.random() * 100 + "vw";
+                h.style.animationDuration = (Math.random() * 3 + 3) + "s";
+                document.body.appendChild(h);
+                setTimeout(() => h.remove(), 6000);
             }, 500);
         }
 
-        /* Fireworks */
+        /* FIREWORK */
         function fireworks() {
             for (let i = 0; i < 50; i++) {
                 let fw = document.createElement("div");
@@ -523,17 +345,6 @@
                 document.body.appendChild(fw);
                 setTimeout(() => fw.remove(), 1200);
             }
-        }
-
-
-
-        function zoomImage(img) {
-            document.getElementById("zoomModal").classList.remove("hidden");
-            document.getElementById("zoomedImg").src = img.src;
-        }
-
-        function closeZoom() {
-            document.getElementById("zoomModal").classList.add("hidden");
         }
 
     </script>
