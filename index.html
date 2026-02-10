@@ -4,161 +4,538 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ரோஸ் டே ஸ்பெஷல் 🌹</title>
+    <title>Kanimozhi ❤️ Saravanan</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
         body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Noto Sans Tamil', sans-serif;
-            background: linear-gradient(-45deg, #ff0844, #ff6a88, #ff99ac, #ff1e56);
-            background-size: 400% 400%;
-            animation: gradientMove 8s ease infinite;
-            overflow: hidden;
+            overflow-x: hidden;
+            font-family: sans-serif;
         }
 
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .card {
-            background: rgba(0, 0, 0, 0.75);
-            padding: 40px;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            color: white;
-            width: 380px;
-            position: relative;
-        }
-
-        h1 {
-            color: #ffd6e0;
-            font-size: 26px;
-        }
-
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        button {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 15px;
-            transition: 0.3s;
-        }
-
-        #yesBtn {
-            background: #ff1e56;
-            color: white;
-            box-shadow: 0 0 15px #ff4d6d;
-        }
-
-        #yesBtn:hover {
-            transform: scale(1.1);
-        }
-
-        #noBtn {
-            background: #444;
-            color: white;
-            position: absolute;
-        }
-
-        .message {
-            margin-top: 20px;
-            font-size: 19px;
+        /* =========================
+   SECTION TRANSITION
+========================= */
+        .section {
             display: none;
-            animation: fadeIn 1s ease forwards;
-            color: #ffd6e0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        .section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .floating {
-            position: absolute;
+        /* =========================
+   FLOATING HEARTS
+========================= */
+        .heart {
+            position: fixed;
+            bottom: -20px;
             font-size: 22px;
             animation: floatUp 6s linear infinite;
+            pointer-events: none;
         }
 
         @keyframes floatUp {
             0% {
-                transform: translateY(100vh);
+                transform: translateY(0);
+                opacity: 1;
             }
 
             100% {
-                transform: translateY(-10vh);
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+   GALLERY AUTO SCROLL
+========================= */
+        .scrollWrapper {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .scrollGallery {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .scrollGallery img {
+            width: 240px;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            transition: transform .6s ease;
+        }
+
+        .scrollGallery img:hover {
+            transform: scale(1.15) rotate(3deg);
+        }
+
+        /* =========================
+   PASSWORD SCREEN
+========================= */
+        #lockScreen {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #000, #111);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            text-align: center;
+        }
+
+        /* =========================
+   REAL HEART SHAPE LAYOUT
+========================= */
+        .heart-container {
+            position: relative;
+            width: 420px;
+            height: 380px;
+            margin: auto;
+        }
+
+        .heart-container img {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            animation: heartbeat 2s infinite ease-in-out;
+            transition: transform .4s ease;
+        }
+
+        .heart-container img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Heart Positions */
+        .heart-container img:nth-child(1) {
+            top: 40px;
+            left: 110px;
+        }
+
+        .heart-container img:nth-child(2) {
+            top: 40px;
+            right: 110px;
+        }
+
+        .heart-container img:nth-child(3) {
+            top: 100px;
+            left: 50px;
+        }
+
+        .heart-container img:nth-child(4) {
+            top: 100px;
+            left: 150px;
+        }
+
+        .heart-container img:nth-child(5) {
+            top: 100px;
+            right: 150px;
+        }
+
+        .heart-container img:nth-child(6) {
+            top: 100px;
+            right: 50px;
+        }
+
+        .heart-container img:nth-child(7) {
+            top: 170px;
+            left: 80px;
+        }
+
+        .heart-container img:nth-child(8) {
+            top: 170px;
+            left: 170px;
+        }
+
+        .heart-container img:nth-child(9) {
+            top: 170px;
+            right: 170px;
+        }
+
+        .heart-container img:nth-child(10) {
+            top: 170px;
+            right: 80px;
+        }
+
+        .heart-container img:nth-child(11) {
+            top: 240px;
+            left: 120px;
+        }
+
+        .heart-container img:nth-child(12) {
+            top: 240px;
+            right: 120px;
+        }
+
+        .heart-container img:nth-child(13) {
+            bottom: 30px;
+            left: 165px;
+        }
+
+        /* =========================
+   HEARTBEAT PULSE
+========================= */
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* =========================
+   FIREWORK PARTICLES
+========================= */
+        .firework {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: explode 1.2s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes explode {
+            from {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            to {
+                transform: scale(12);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+   ZOOM MODAL
+========================= */
+        .zoom-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+
+        .zoom-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 25px;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+        }
+
+        /* =========================
+   MOBILE OPTIMIZATION
+========================= */
+        @media (max-width: 768px) {
+
+            .scrollGallery img {
+                width: 160px;
+            }
+
+            .heart-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .heart-container img {
+                width: 70px;
+                height: 70px;
+            }
+
+            #countdown {
+                font-size: 60px !important;
             }
         }
     </style>
 </head>
 
-<body>
+<body class="bg-gradient-to-r from-pink-500 via-red-500 to-purple-600 text-white text-center">
 
-    <div class="floating" style="left:10%; animation-delay:0s;">🌹</div>
-    <div class="floating" style="left:30%; animation-delay:2s;">💖</div>
-    <div class="floating" style="left:50%; animation-delay:4s;">🌹</div>
-    <div class="floating" style="left:70%; animation-delay:1s;">💕</div>
-    <div class="floating" style="left:90%; animation-delay:3s;">❤️</div>
-
-    <div class="card">
-        <h1>🌹 ஹேப்பி ரோஸ் டே என் கணவருக்கு 🌹</h1>
-
-        <p>
-            ரோஜா சிவப்பு நிறம்… ❤️<br>
-            என் காதலும் அப்படித்தான் தீவிரமானது…<br><br>
-            ஒவ்வொரு நாளும் உன்னை நான்
-            இன்னும் இன்னும் அதிகமாக நேசிக்கிறேன் 💕
-        </p>
-
-        <button id="yesBtn" onclick="showLove()">நானும் உன்னை நேசிக்கிறேன் ❤️</button>
-        <button id="noBtn">இல்லை 😜</button>
-
-        <div class="message" id="loveMessage">
-            🌹 நீ தான் என் வாழ்வு…
-            என் சிரிப்பு… என் சந்தோஷம்… ❤️
-            எப்போதும் உன்னோடு தான் இருக்க வேண்டும் 💖
-            நான் உன்னை மிகவும் மிகவும் நேசிக்கிறேன் 💕
+    <!-- 🔐 PASSWORD LOCK -->
+    <div id="lockScreen">
+        <div>
+            <h1 class="text-3xl mb-6">Enter Our Secret Password 🔐</h1>
+            <input type="password" id="password" class="p-3 rounded text-black">
+            <br><br>
+            <button onclick="unlock()" class="bg-pink-600 px-6 py-2 rounded">
+                Unlock ❤️
+            </button>
+            <p id="error" class="mt-4 text-red-400"></p>
         </div>
     </div>
 
-    <script>
-        const noBtn = document.getElementById("noBtn");
+    <!-- 🎵 Music -->
+    <audio id="bgMusic" loop>
+        <source src="audio/love.mp3" type="audio/mpeg">
+    </audio>
 
-        noBtn.addEventListener("mouseover", function () {
-            const x = Math.random() * (window.innerWidth - 100);
-            const y = Math.random() * (window.innerHeight - 50);
-            noBtn.style.left = x + "px";
-            noBtn.style.top = y + "px";
+    <!-- ❤️ HERO -->
+    <section id="hero" class="section active py-24">
+        <h1 class="text-5xl font-bold mb-6">
+            Kanimozhi ❤️ Saravanan
+        </h1>
+
+        <p class="text-xl mb-4">We go CINEMA LEVEL 5000? 😍💍</p>
+
+        <p id="dayCounter" class="text-lg mb-10"></p>
+
+        <button onclick="startCountdown()"
+            class="bg-white text-pink-600 px-8 py-3 rounded-full shadow-lg hover:scale-110 transition">
+            Start Surprise 💌
+        </button>
+    </section>
+
+    <!-- ⏳ COUNTDOWN -->
+    <section id="countdownSection" class="section py-24">
+        <div id="countdown" class="text-8xl font-bold"></div>
+    </section>
+
+    <!-- 💬 FIRST CHAT -->
+    <section id="chatSection" class="section py-24">
+        <h2 class="text-4xl font-bold mb-6">Our First Chat 💬</h2>
+        <img src="./images/first_chat.jpeg" class="mx-auto w-80 rounded-3xl shadow-2xl">
+        <p class="mt-6 text-xl italic">"Can I Call You?" 📞❤️</p>
+        <button onclick="showLoveQuestion()" class="mt-8 bg-white text-pink-600 px-6 py-2 rounded-full">Next 💕</button>
+    </section>
+
+    <!-- ❤️ LOVE QUESTION -->
+    <section id="loveQuestion" class="section py-24">
+        <h2 class="text-4xl mb-10">Do You Love Me? 😍</h2>
+        <div class="flex justify-center gap-10 relative">
+            <button onclick="yesClicked()" class="bg-white text-pink-600 px-8 py-3 rounded-full">YES ❤️</button>
+            <button id="noBtn" class="bg-black px-8 py-3 rounded-full absolute">NO 😜</button>
+        </div>
+    </section>
+
+    <!-- 📸 GALLERY -->
+    <section id="gallerySection" class="section py-24 bg-black bg-opacity-40">
+        <h2 class="text-4xl font-bold mb-12">Our Romantic Memories 💕</h2>
+        <div class="scrollWrapper">
+            <div class="scrollGallery">
+                <script>
+                    for (let i = 1; i <= 16; i++) {
+                        document.write(`<img src="./images/Image_${i}.jpeg">`);
+                    }
+                    for (let i = 1; i <= 16; i++) {
+                        document.write(`<img src="./images/Image_${i}.jpeg">`);
+                    }
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- 💌 TAMIL AUTO TYPING MESSAGE -->
+    <section id="tamilSection" class="section py-24">
+        <h2 class="text-4xl font-bold mb-10">உனக்காக ❤️</h2>
+        <p id="typingText" class="text-2xl max-w-2xl mx-auto"></p>
+    </section>
+
+    <section id="finalSection"
+        class="section py-24 bg-gradient-to-r from-pink-600 via-red-500 to-purple-600 text-center">
+
+        <h1 class="text-6xl font-bold mb-16 text-white animate-bounce">
+            I LOVE YOU FOREVER ❤️
+        </h1>
+
+        <div class="heart-container">
+
+            <!-- Row 1 -->
+            <img src="./images/Image_17.jpeg">
+            <img src="./images/Image_18.jpeg">
+
+            <!-- Row 2 -->
+            <img src="./images/Image_19.jpeg">
+            <img src="./images/Image_20.jpeg">
+            <img src="./images/Image_21.jpeg">
+            <img src="./images/Image_22.jpeg">
+
+            <!-- Row 3 -->
+            <img src="./images/Image_23.jpeg">
+            <img src="./images/Image_17.jpeg">
+            <img src="./images/Image_18.jpeg">
+            <img src="./images/Image_19.jpeg">
+            <img src="./images/Image_20.jpeg">
+            <img src="./images/Image_21.jpeg">
+
+            <!-- Row 4 -->
+            <img src="./images/Image_22.jpeg">
+            <img src="./images/Image_23.jpeg">
+            <img src="./images/Image_17.jpeg">
+            <img src="./images/Image_18.jpeg">
+
+            <!-- Row 5 -->
+            <img src="./images/Image_19.jpeg">
+            <img src="./images/Image_20.jpeg">
+        </div>
+
+        <h2 class="mt-10 text-3xl font-bold text-white animate-pulse">
+            Ammu ❤️ Chittu
+        </h2>
+
+    </section>
+
+    <!-- Zoom Modal -->
+    <div id="zoomModal" class="zoom-modal hidden" onclick="closeZoom()">
+        <img id="zoomedImg">
+    </div>
+
+
+
+
+    <script>
+
+        /* PASSWORD */
+        function unlock() {
+            let pass = document.getElementById("password").value;
+            if (pass === "forever27") {
+                document.getElementById("lockScreen").style.display = "none";
+            } else {
+                document.getElementById("error").innerText = "Wrong Password 😜";
+            }
+        }
+
+        /* SECTION SWITCH */
+        function show(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        /* Marriage Day Counter */
+        let marriageDate = new Date("Oct 27, 2025");
+        let today = new Date();
+        let diff = Math.floor((today - marriageDate) / (1000 * 60 * 60 * 24));
+        document.getElementById("dayCounter").innerText =
+            "We have been together for " + diff + " beautiful days ❤️";
+
+        /* Countdown */
+        function startCountdown() {
+            show('countdownSection');
+            let count = 5;
+            let el = document.getElementById('countdown');
+            el.innerText = count;
+            let interval = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    el.innerText = count;
+                } else {
+                    clearInterval(interval);
+                    show('chatSection');
+                }
+            }, 1000);
+        }
+
+        /* Next */
+        function showLoveQuestion() {
+            show('loveQuestion');
+        }
+
+        /* NO Button */
+        let noBtn = document.getElementById("noBtn");
+        noBtn.addEventListener("mouseover", () => {
+            noBtn.style.left = Math.random() * 80 + "%";
+            noBtn.style.top = Math.random() * 80 + "%";
         });
 
-        function showLove() {
-            document.getElementById("loveMessage").style.display = "block";
+        /* YES */
+        function yesClicked() {
+            document.getElementById("bgMusic").play();
+            show('gallerySection');
+            createHearts();
+            setTimeout(() => {
+                show('tamilSection');
+                typeTamil();
+            }, 10000);
         }
+
+        /* Tamil Auto Typing */
+        let message = "நீ தான் என் வாழ்க்கை... என் மகிழ்ச்சி... என் இதயம்... நான் உன்னை என்றும் என்றும் நேசிக்கிறேன் ❤️";
+        let i = 0;
+        function typeTamil() {
+            let interval = setInterval(() => {
+                if (i < message.length) {
+                    document.getElementById("typingText").innerHTML += message.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        show('finalSection');
+                        fireworks();
+                    }, 3000);
+                }
+            }, 70);
+        }
+
+        /* Hearts */
+        function createHearts() {
+            setInterval(() => {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "💖";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 6000);
+            }, 500);
+        }
+
+        /* Fireworks */
+        function fireworks() {
+            for (let i = 0; i < 50; i++) {
+                let fw = document.createElement("div");
+                fw.className = "firework";
+                fw.style.background = `hsl(${Math.random() * 360},100%,70%)`;
+                fw.style.left = Math.random() * 100 + "vw";
+                fw.style.top = Math.random() * 100 + "vh";
+                document.body.appendChild(fw);
+                setTimeout(() => fw.remove(), 1200);
+            }
+        }
+
+
+
+        function zoomImage(img) {
+            document.getElementById("zoomModal").classList.remove("hidden");
+            document.getElementById("zoomedImg").src = img.src;
+        }
+
+        function closeZoom() {
+            document.getElementById("zoomModal").classList.add("hidden");
+        }
+
     </script>
 
 </body>
