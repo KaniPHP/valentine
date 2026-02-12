@@ -319,12 +319,22 @@
     <div id="lockScreen">
         <div>
             <h1 class="text-3xl mb-6">Enter Our Secret Password 🔐 (Pet name)</h1>
-            <input type="password" id="password" class="p-3 rounded text-black">
-            <br><br>
-            <button onclick="unlock()" class="bg-pink-600 px-6 py-2 rounded">Unlock ❤️</button>
+
+            <form onsubmit="unlock(event)">
+                <input type="password" id="password" class="p-3 rounded text-black" placeholder="Enter password"
+                    required>
+
+                <br><br>
+
+                <button type="submit" class="bg-pink-600 px-6 py-2 rounded">
+                    Unlock ❤️
+                </button>
+            </form>
+
             <p id="error" class="mt-4 text-red-400"></p>
         </div>
     </div>
+
 
     <!-- HERO -->
     <section id="hero" class="section active py-24">
@@ -430,18 +440,30 @@
         <img id="modalImage"
             class="max-w-full max-h-[90vh] rounded-xl shadow-2xl transition-transform duration-300 scale-95">
     </div>
+    <!-- Background Music -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="./audio/love.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
 
         /* PASSWORD */
-        function unlock() {
-            let pass = document.getElementById("password").value;
+        function unlock(event) {
+            event.preventDefault(); // Prevent page reload
+
+            let pass = document.getElementById("password").value.trim();
+
             if (pass === "ammu" || pass === "chittu" || pass === "hi") {
                 document.getElementById("lockScreen").style.display = "none";
+
+                let music = document.getElementById("bgMusic");
+                music.volume = 0.3;
+                music.play();
             } else {
-                document.getElementById("error").innerText = "Wrong Password 😜";
+                document.getElementById("error").innerText = "Wrong Password 😜 Court Order: 4 Situps Immediately! 💪⚖️😂";
             }
         }
+
 
         /* SECTION SWITCH */
         function show(id) {
