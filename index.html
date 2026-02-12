@@ -57,7 +57,7 @@
             grid-template-columns: repeat(9, minmax(30px, 1fr));
             gap: 6px;
             justify-content: center;
-            max-width: 100%;
+            max-width: 60%;
             margin: auto;
         }
 
@@ -156,6 +156,15 @@
             transform: scale(0.95);
         }
 
+
+        .float-img {
+            margin-left: 120px;
+        }
+
+        .second-float-img {
+            margin-left: 40px;
+        }
+
         /* ================= RESPONSIVE MOBILE ================= */
         @media (max-width: 1024px) {
 
@@ -173,6 +182,14 @@
 
             .scrollGallery img {
                 width: 160px;
+            }
+
+            .float-img {
+                margin-left: 120px;
+            }
+
+            .second-float-img {
+                margin-left: 40px;
             }
         }
 
@@ -221,6 +238,14 @@
             .photo-heart img {
                 border-radius: 10px;
             }
+
+            .float-img {
+                margin-left: 62px;
+            }
+
+            .second-float-img {
+                margin-left: 25px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -244,6 +269,45 @@
             button {
                 width: 100%;
             }
+
+            .float-img {
+                margin-left: 62px;
+            }
+
+            .second-float-img {
+                margin-left: 25px;
+            }
+        }
+
+        #imageModal img {
+            animation: zoomIn 0.3s ease forwards;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .photo-heart img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-heart img:hover {
+            transform: scale(1.1);
+        }
+
+        .heading-style {
+            background: linear-gradient(90deg, #dbcb02, #16eb93);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 
@@ -264,7 +328,7 @@
 
     <!-- HERO -->
     <section id="hero" class="section active py-24">
-        <h1 class="text-5xl font-bold mb-6">Kanimozhi ❤️ Saravanan</h1>
+        <h1 class="text-5xl font-bold mb-6 heading-style">Kanimozhi ❤️ Saravanan</h1>
         <p id="dayCounter" class="mb-6 text-xl"></p>
         <button onclick="startCountdown()" class="bg-white text-pink-600 px-8 py-3 rounded-full">Start Surprise
             💌</button>
@@ -346,20 +410,26 @@
             <div class="empty"></div>
             <div class="empty"></div>
             <div class="empty"></div>
-            <div class="empty"></div><img src="./images/Image_19.jpeg" style="margin-left: 40px;"><img
-                src="./images/Image_20.jpeg" style="margin-left: 40px;"><img src="./images/Image_21.jpeg"
-                style="margin-left: 40px;">
+            <div class="empty"></div><img src="./images/Image_19.jpeg" class="second-float-img"><img
+                src="./images/Image_20.jpeg" class="second-float-img"><img src="./images/Image_21.jpeg"
+                class="second-float-img">
             <div class="empty"></div>
             <div class="empty"></div>
             <div class="empty"></div>
             <div class="empty"></div>
             <div class="empty"></div>
-            <div class="empty"></div><img src="./images/Image_22.jpeg" style="margin-left: 120px;">
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
+            <div class="empty"></div><img src="./images/Image_22.jpeg" class="float-img" <div class="empty">
+        </div>
+        <div class="empty"></div>
+        <div class="empty"></div>
         </div>
     </section>
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50 p-4">
+        <span id="closeModal" class="absolute top-6 right-6 text-white text-4xl cursor-pointer">&times;</span>
+        <img id="modalImage"
+            class="max-w-full max-h-[90vh] rounded-xl shadow-2xl transition-transform duration-300 scale-95">
+    </div>
 
     <script>
 
@@ -457,6 +527,32 @@
             }
         }
 
+    </script>
+    <script>
+        const images = document.querySelectorAll(".photo-heart img");
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeBtn = document.getElementById("closeModal");
+
+        images.forEach(img => {
+            img.addEventListener("click", function () {
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+                modalImg.src = this.src;
+            });
+        });
+
+        closeBtn.addEventListener("click", () => {
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+        });
+
+        modal.addEventListener("click", (e) => {
+            if (e.target !== modalImg) {
+                modal.classList.add("hidden");
+                modal.classList.remove("flex");
+            }
+        });
     </script>
 
 </body>
